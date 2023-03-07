@@ -12,7 +12,7 @@ jobs:
           node-version: '14'
       - run: npm install -g bats
       - run: bats -v
-  deployment-qa:
+  deployment-staging:
     runs-on: ubuntu-latest
     environment: staging
     steps:
@@ -22,7 +22,7 @@ jobs:
           node-version: '14'
       - run: npm install -g bats
       - run: bats -v
-  deployment-prod:
+  deployment-production:
     runs-on: ubuntu-latest
     environment: production
     steps:
