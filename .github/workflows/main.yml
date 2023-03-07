@@ -14,7 +14,7 @@ jobs:
       - run: bats -v
   deployment-qa:
     runs-on: ubuntu-latest
-    environment: qa
+    environment: staging
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -24,7 +24,7 @@ jobs:
       - run: bats -v
   deployment-prod:
     runs-on: ubuntu-latest
-    environment: prod
+    environment: production
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
