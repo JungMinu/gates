@@ -2,9 +2,29 @@ name: NCM v3
 run-name: NCM Gates
 on: [push]
 jobs:
-  deployment:
+  deployment-dev:
     runs-on: ubuntu-latest
     environment: dev
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - run: npm install -g bats
+      - run: bats -v
+  deployment-qa:
+    runs-on: ubuntu-latest
+    environment: qa
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - run: npm install -g bats
+      - run: bats -v
+  deployment-prod:
+    runs-on: ubuntu-latest
+    environment: prod
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
