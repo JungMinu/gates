@@ -1,6 +1,6 @@
 name: NCM v3
 run-name: NCM Gates
-permissions: read-all|write-all
+permissions: read-all
 on: [push]
 jobs:
   deployment-dev:
