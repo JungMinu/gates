@@ -1,5 +1,9 @@
 name: NCM v3
 run-name: NCM Gates
+permissions:
+  actions: read
+  contents: read
+  security-events: write
 on: [push]
 jobs:
   deployment-dev:
