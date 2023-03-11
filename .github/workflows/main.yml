@@ -43,7 +43,7 @@ jobs:
           input: 'report.json'
           title: 'NCM Report'
           path: 'report.json' 
-  deployment:
+  deployment-production:
     runs-on: ubuntu-latest
     environment: production
     steps:
@@ -56,5 +56,10 @@ jobs:
           token: ${{ secrets.NCM_TOKEN }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           github_job_name: N|S -> NCM Pipeline
-      - name: NCM Report
-        run: echo "The selected color is ${{ fromJson(steps.report.outputs.ncm[0]) }}"
+      - name: Annotate
+        uses: Attest/annotations-action@v1.0.7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          input: 'report.json'
+          title: 'NCM Report'
+          path: 'report.json' 
