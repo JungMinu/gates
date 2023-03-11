@@ -58,7 +58,6 @@ jobs:
           github_job_name: N|S -> NCM Pipeline
       - name: Annotate
         run: |
-          chmod +x ncm.sh
           ./ncm.sh
         shell: bash
       - name: Annotate
