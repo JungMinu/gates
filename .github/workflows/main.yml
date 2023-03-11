@@ -56,11 +56,5 @@ jobs:
           token: ${{ secrets.NCM_TOKEN }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           github_job_name: N|S -> NCM Pipeline
-      - name: Extract results
-        run: |
-          # fetch the test-results variable to extract data
-          test_results=$(echo ${{ jobs.deployment.outputs.results }} | base64 --decode)
-          # Use the extracted result
-          echo ${test_results}  
       - name: NCM Report
         run: echo "The selected color is ${{ steps.report.outputs }}"
