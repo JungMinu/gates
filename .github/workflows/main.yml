@@ -45,6 +45,7 @@ jobs:
           path: 'report.json' 
   deployment-production:
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - uses: actions/checkout@v3
       - run: npm install
@@ -55,10 +56,14 @@ jobs:
           token: ${{ secrets.NCM_TOKEN }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           github_job_name: N|S -> NCM Pipeline
-      - name: Annotate
-        uses: Attest/annotations-action@v1.0.7
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          input: 'report.json'
-          title: 'NCM Report'
-          path: 'report.json' 
+        run: echo "::set-output name=results::$(cat report.json)"
+      - name: Extract results
+        run: |
+          # fetch the test-results variable to extract data
+          test_results=$(echo ${{ jobs.test.outputs.results }} | base64 --decode)
+          # Use the extracted result
+          echo ${test_results}  
+      - name: NCM Report
+        run: |
+          echo "NCM Report"
+          echo "::error file=app.js,line=20,col=25::This is an error message"
