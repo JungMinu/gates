@@ -57,4 +57,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           github_job_name: N|S -> NCM Pipeline
       - name: NCM Report
-        run: echo "The selected color is ${{ steps.report.outputs.ncm }}"
+        run: echo "The selected color is ${{ steps.report.outputs.ncm.output }}"
