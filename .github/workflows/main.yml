@@ -43,7 +43,7 @@ jobs:
           input: 'report.json'
           title: 'NCM Report'
           path: 'report.json' 
-  deployment-production:
+  deployment:
     runs-on: ubuntu-latest
     environment: production
     steps:
@@ -59,7 +59,7 @@ jobs:
       - name: Extract results
         run: |
           # fetch the test-results variable to extract data
-          test_results=$(echo ${{ jobs.test.outputs.results }} | base64 --decode)
+          test_results=$(echo ${{ jobs.deployment.outputs.results }} | base64 --decode)
           # Use the extracted result
           echo ${test_results}  
       - name: NCM Report
