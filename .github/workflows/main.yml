@@ -58,8 +58,9 @@ jobs:
           github_job_name: N|S -> NCM Pipeline
       - name: Annotate
         run: |
-          echo "NCM Report"
-          cat report.json
+          chmod +x ncm.sh
+          ./ncm.sh
+        shell: bash
       - name: Annotate
         uses: Attest/annotations-action@v1.0.7
         with:
