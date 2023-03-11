@@ -63,6 +63,4 @@ jobs:
           # Use the extracted result
           echo ${test_results}  
       - name: NCM Report
-        run: |
-          echo "NCM Report"
-          echo "::error file=app.js,line=20,col=25::This is an error message"
+        run: echo "The selected color is ${{ steps.report.outputs }}"
