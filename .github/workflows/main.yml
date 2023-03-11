@@ -56,7 +56,6 @@ jobs:
           token: ${{ secrets.NCM_TOKEN }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
           github_job_name: N|S -> NCM Pipeline
-        run: echo "::set-output name=results::$(cat report.json)"
       - name: Extract results
         run: |
           # fetch the test-results variable to extract data
