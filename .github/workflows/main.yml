@@ -57,5 +57,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           github_job_name: N|S -> NCM Pipeline
       - name: Annotate
-        run: ./ncm.sh
+        run: ./ncm-annotate.sh
         shell: bash
