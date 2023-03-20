@@ -3,7 +3,7 @@ run-name: NCM Gates
 permissions: read-all
 on: [push]
 jobs:
-  ncm-annotate:
+  NCM-Report:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
