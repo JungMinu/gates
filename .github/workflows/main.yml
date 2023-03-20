@@ -3,46 +3,6 @@ run-name: NCM Gates
 permissions: read-all
 on: [push]
 jobs:
-  deployment-dev:
-    runs-on: ubuntu-latest
-    environment: dev
-    steps:
-      - uses: actions/checkout@v3
-      - run: npm install
-      - name: NCM Report
-        id: report
-        uses: nodesource/ncm-report-github-action@gate
-        with:
-          token: ${{ secrets.NCM_TOKEN }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          github_job_name: N|S -> NCM Pipeline
-      - name: Annotate
-        uses: Attest/annotations-action@v1.0.7
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          input: 'report.json'
-          title: 'NCM Report'
-          path: 'report.json' 
-  deployment-staging:
-    runs-on: ubuntu-latest
-    environment: staging
-    steps:
-      - uses: actions/checkout@v3
-      - run: npm install
-      - name: NCM Report
-        id: report
-        uses: nodesource/ncm-report-github-action@gate
-        with:
-          token: ${{ secrets.NCM_TOKEN }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          github_job_name: N|S -> NCM Pipeline
-      - name: Annotate
-        uses: Attest/annotations-action@v1.0.7
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          input: 'report.json'
-          title: 'NCM Report'
-          path: 'report.json' 
   deployment-production:
     runs-on: ubuntu-latest
     environment: production
